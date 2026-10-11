@@ -1,0 +1,9 @@
+{
+  "name": "banana-fighter",
+  "private": true,
+  "type": "module",
+  "description": "Banana Fighter — Warehouse Championship. A voxel crowd-brawler in the browser (three.js). No build step: the game is static (index.html).",
+  "scripts": {
+    "start": "node serve.mjs"
+  }
+}
