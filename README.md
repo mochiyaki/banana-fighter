@@ -23,6 +23,9 @@ scratch, the bot uses a decision engine (Claude, or a tunable rule set) and wrap
 that repeatedly **plays → evaluates → names its mistakes → rewrites its strategy → plays again**,
 keeping only the versions that score better.
 
+![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
+
+copy and paste easy flowchart
 ```
             ┌──────────────────────────────────────────────────────┐
             │                 recursive_harness.py                 │
@@ -36,8 +39,6 @@ keeping only the versions that score better.
                  ▼                                       ▼
             storage.py (JSONL ─or─ MongoDB)      telemetry.py (log ─or─ Raindrop)
 ```
-
-![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
 
 ## Quick start
 
@@ -96,7 +97,7 @@ stalls.
 
 Stop early with `--target <score>` or `--patience <n>` (consecutive rejections).
 
-![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
+![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/curve.png)
 
 ### The Strategy object
 
