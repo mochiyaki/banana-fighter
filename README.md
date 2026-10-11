@@ -1,4 +1,4 @@
-# banana-fighter
+# 🍌 banana-fighter
 
 To train a bot to play a game for you using recursive harnessing, I would recommend building a self-improving agent that repeatedly plays the game, evaluates its performance, identifies mistakes, modifies its strategy, and tries again.
 
