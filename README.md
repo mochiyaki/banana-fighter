@@ -196,3 +196,5 @@ the run id as `convo_id`. Written against the `raindrop-ai` SDK's `Raindrop(api_
 ## Multiple agent force workflow
 
 ![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/multiple_agent_force_workflow.png)
+
+Special thanks **MongoDB Atlas Sandbox**, AWS, Cursor, **Raindrop**
