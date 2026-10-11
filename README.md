@@ -1,5 +1,7 @@
 # 🍌 banana-fighter
 
+https://mochiyaki.github.io/app9/ 👈 Demo Game Link here or opt to run it locally following the guide below
+
 Clone this repo
 ```
 git clone https://github.com/mochiyaki/banana-fighter
@@ -34,6 +36,8 @@ keeping only the versions that score better.
                  ▼                                       ▼
             storage.py (JSONL ─or─ MongoDB)      telemetry.py (log ─or─ Raindrop)
 ```
+
+![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
 
 ## Quick start
 
@@ -91,6 +95,8 @@ stalls.
    `--from-checkpoint path`.
 
 Stop early with `--target <score>` or `--patience <n>` (consecutive rejections).
+
+![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
 
 ### The Strategy object
 
@@ -185,3 +191,7 @@ the run id as `convo_id`. Written against the `raindrop-ai` SDK's `Raindrop(api_
 - Opponent curriculum: weight seeds toward the personality the current best loses to.
 - Meta-optimization: let the LLM optimizer also propose new mistake detectors when the score plateaus.
 - Parallel episodes for a real game (the loop is sequential today because the toy env is instant).
+
+## Multiple agent force workflow
+
+![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/multiple_agent_force_workflow.png)
