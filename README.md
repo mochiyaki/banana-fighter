@@ -1,5 +1,21 @@
 # 🍌 banana-fighter
 
+Clone this repo
+```
+git clone https://github.com/mochiyaki/banana-fighter
+```
+
+Enter the directory
+```
+cd banana-fighter
+```
+
+Play the game
+```
+node serve.mjs
+```
+
+## Recursive harnessing
 A **recursive training harness** for a game-playing bot. Instead of training a network from
 scratch, the bot uses a decision engine (Claude, or a tunable rule set) and wraps it in a loop
 that repeatedly **plays → evaluates → names its mistakes → rewrites its strategy → plays again**,
@@ -10,7 +26,7 @@ keeping only the versions that score better.
             │                 recursive_harness.py                 │
             │                                                      │
   strategy  │   play N episodes ──► evaluate ──► optimize ──┐      │
-  v(k)  ───►│   (game_env + agent)   (evaluator)  (optimizer)│      │
+  v(k)  ───►│   (game_env + agent)  (evaluator)  (optimizer)│      │
             │        ▲                                      │      │
             │        └── accept if better, else revert ◄────┘ v(k+1)
             └──────────────────────────────────────────────────────┘
@@ -112,7 +128,7 @@ logs/          harness.log, events.jsonl
 tests/
 ```
 
-## Plugging in a real game
+## Plugging in a real game - please see above (banana-fighter)
 
 The harness only depends on the `GameEnv` protocol in `game_env.py`:
 
@@ -163,7 +179,7 @@ accepted/rejected candidates, and an `llm_agent` / `llm_optimizer` event per Cla
 the run id as `convo_id`. Written against the `raindrop-ai` SDK's `Raindrop(api_key, project_id=...)`,
 `track_ai`, `track_signal`, `flush` signatures; not yet verified against a live Raindrop project.
 
-## Ideas for the next iteration of the harness itself
+## Iteration of the harness
 
 - Vision: give `LLMAgent` an image block alongside the text observation for pixel-based games.
 - Opponent curriculum: weight seeds toward the personality the current best loses to.
