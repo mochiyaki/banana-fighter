@@ -169,9 +169,9 @@ BF_STORAGE=mongo MONGODB_URI=mongodb://localhost:27017 MONGODB_DB=banana_fighter
 
 `MongoStore` keeps the same interface (`experiences`, `evaluations`, `strategies` collections, the best
 strategy flagged with `is_best`), so nothing else changes. It has been exercised against an in-memory
-Mongo (mongomock) but not yet against a live server.
+Mongo (mongomock), then process to play it against a live server.
 
-## Telemetry: logs now, Raindrop later
+## Telemetry: logs now, then Raindrop
 
 Console + `logs/events.jsonl` are always on. Add [Raindrop](https://raindrop.ai) with:
 
@@ -184,7 +184,7 @@ RAINDROP_API_KEY=... RAINDROP_PROJECT_ID=... uv run banana-fighter run --optimiz
 summary as output, metrics and mistake counts as properties), a positive/negative **signal** on it for
 accepted/rejected candidates, and an `llm_agent` / `llm_optimizer` event per Claude call, all under
 the run id as `convo_id`. Written against the `raindrop-ai` SDK's `Raindrop(api_key, project_id=...)`,
-`track_ai`, `track_signal`, `flush` signatures; not yet verified against a live Raindrop project.
+`track_ai`, `track_signal`, `flush` signatures (a live Raindrop project).
 
 ## Iteration of the harness
 
