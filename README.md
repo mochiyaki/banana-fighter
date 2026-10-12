@@ -23,9 +23,6 @@ scratch, the bot uses a decision engine (Claude, or a tunable rule set) and wrap
 that repeatedly **plays → evaluates → names its mistakes → rewrites its strategy → plays again**,
 keeping only the versions that score better.
 
-![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/recursive_harness.png)
-
-copy and paste easy flowchart
 ```
             ┌──────────────────────────────────────────────────────┐
             │                 recursive_harness.py                 │
@@ -43,12 +40,12 @@ copy and paste easy flowchart
 ## Quick start
 
 ```bash
-uv sync                          # Python >=3.10; installs the anthropic SDK + pytest
+uv sync                                 # Python >=3.10; installs the anthropic SDK + pytest
 uv run banana-fighter run -n 20 -e 12   # 20 iterations x 12 episodes, fully offline
-uv run banana-fighter play       # watch the best strategy play one episode, move by move
-uv run banana-fighter history    # score per iteration
-uv run banana-fighter show-best  # the stored best strategy (params + playbook)
-uv run pytest                    # 20 tests, < 1 s
+uv run banana-fighter play              # watch the best strategy play one episode, move by move
+uv run banana-fighter history           # score per iteration
+uv run banana-fighter show-best         # the stored best strategy (params + playbook)
+uv run pytest                           # 20 tests, < 1 s
 ```
 
 Without an API key the harness runs the **rule-based agent** and **rule-based optimizer**: it is
@@ -143,7 +140,7 @@ The harness only depends on the `GameEnv` protocol in `game_env.py`:
 class GameEnv(Protocol):
     name: str
     actions: list[str]
-    def reset(self, seed: int) -> Observation      # Observation(turn, state: dict, legal_actions, text)
+    def reset(self, seed: int) -> Observation       # Observation(turn, state: dict, legal_actions, text)
     def step(self, action: str) -> StepResult       # StepResult(observation, reward, done, info)
     def rules(self) -> str                          # text the LLM agent/optimizer read
 ```
@@ -158,7 +155,7 @@ intents, stamina management, three enemy personalities that rotate with the seed
 reads the player back (blocks more after you attack, punishes rests and whiffs). Random play wins
 ~2% of games; the hand-written baseline ~55%.
 
-## Storage: JSONL now, MongoDB later
+## Storage
 
 `BF_STORAGE=jsonl` (default) writes to `memory/`. Switch to MongoDB with:
 
@@ -171,9 +168,9 @@ BF_STORAGE=mongo MONGODB_URI=mongodb://localhost:27017 MONGODB_DB=banana_fighter
 strategy flagged with `is_best`), so nothing else changes. It has been exercised against an in-memory
 Mongo (mongomock), then process to play it against a live server.
 
-## Telemetry: logs now, then Raindrop
+## Telemetry
 
-Console + `logs/events.jsonl` are always on. Add [Raindrop](https://raindrop.ai) with:
+Console + `logs/events.jsonl` are always on. Add Raindrop with:
 
 ```bash
 uv sync --extra raindrop
@@ -192,9 +189,3 @@ the run id as `convo_id`. Written against the `raindrop-ai` SDK's `Raindrop(api_
 - Opponent curriculum: weight seeds toward the personality the current best loses to.
 - Meta-optimization: let the LLM optimizer also propose new mistake detectors when the score plateaus.
 - Parallel episodes for a real game (the loop is sequential today because the toy env is instant).
-
-## Multiple agent force workflow
-
-![screenshot](https://raw.githubusercontent.com/mochiyaki/banana-fighter/master/multiple_agent_force_workflow.png)
-
-Special thanks **MongoDB Atlas Sandbox**, AWS, Cursor, **Raindrop**
